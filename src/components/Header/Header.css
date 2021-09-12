@@ -1,0 +1,68 @@
+.header {
+    background: transparent;
+    width: 100%;
+    padding: 30px 30px 0px 30px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+}
+
+.row {
+    width: 100%;
+    margin: 0;
+}
+
+.row .col-lg-10 {
+    padding: 0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.row .col-lg-2 {
+    padding: 0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#bell_icon {
+    background: white;
+    border: 1px solid #01518A;
+    /*padding: 20px;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    height: 34px;
+    width: 38px;
+    margin: 0px 15px;
+}
+
+#bell_icon img {
+    width: 16px;
+    height: 19.5px;
+}
+
+#user_profile {
+    padding: 0;
+}
+
+#user_profile img {
+    width: 60px;
+    height: 60px;
+}
+
+#down-arrow i {
+    font-size: 18px;
+    color: #5a5a5a;
+}
+
+.row .col-lg-10 h1 {
+    margin: 0;
+    font-weight: 700;
+    color: #01518A;
+}

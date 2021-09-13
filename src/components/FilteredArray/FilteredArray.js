@@ -9,7 +9,7 @@ const FilteredArray = (props) => {
 
     return (
         <div className="container main-container">
-            <h5 className="allVideos">Videos on Resp. Devices</h5>
+            <h5 className="allVideos">Videos on {props.selectTag}</h5>
             <div className="row">
                 {props.cards.map((card,index) =>(
                     <div className="col-lg-3 col-md-6 col-12" key={index}>

@@ -5,13 +5,21 @@ import './Slider.css';
 
 const Slider = (props) => {
 
-    var [tagStyle,setTagStyle] = useState({'backgroundColor':'white'})
-    // var [tagStyle,setTagStyle] = useState({'backgroundColor':'#bae5fa'})
+    var buttonStyle = {
+        'backgroundColor':'#bae5fa'
+    }
 
-    function onTagClick(tag){
-        alert(tag);
-        var obj = {};
-        props.updateFilterObj(obj);
+    function onTagClick(tag,selectedTag){
+        var obj = [];
+        for(var i=0;i<props.cards.length;i++){
+            for(var j=0;j<tag.length;j++){
+                if(props.cards[i].tags.indexOf(tag[j]) > -1){
+                    obj.push(props.cards[i]);
+                    break;
+                }
+            }
+        }
+        props.updateFilterObj(obj,selectedTag);
     }
 
     return (
@@ -42,19 +50,19 @@ const Slider = (props) => {
                             <p>Tags:</p>
                         </div>
                         <div className="col-lg-2 col-md-2 col-3">
-                            <button onClick={() => {onTagClick('fav')}}>Favourites</button>
+                            {props.selectTag == "fav"? <button style={buttonStyle} onClick={() => {onTagClick(["fav"],"fav")}}>Favourites</button> : <button onClick={() => {onTagClick(["fav"],"fav")}}>Favourites</button> }
                         </div>
                         <div className="col-lg-2 col-md-2 col-3">
-                            <button onClick={() => {onTagClick('resp')}}>Resp. Devices</button>
+                            {props.selectTag == "lungs"? <button style={buttonStyle} onClick={() => {onTagClick(["asthma","copd","cancer"],"lungs")}}>Lungs</button>: <button onClick={() => {onTagClick(["asthma","copd","cancer"],"lungs")}}>Lungs</button>}
                         </div>
                         <div className="col-lg-2 col-md-2 col-3">
-                            <button onClick={() => {onTagClick('ct')}}>CT Scans</button>
+                            {props.selectTag == "heart"? <button style={buttonStyle} onClick={() => {onTagClick(["bp","heart","cancer"],"heart")}}>Heart</button>: <button onClick={() => {onTagClick(["bp","heart","cancer"],"heart")}}>Heart</button>}
                         </div>
                         <div className="col-lg-2 col-md-2 col-3">
-                            <button onClick={() => {onTagClick('db')}}>DRTB</button>
+                            {props.selectTag == "brain"? <button style={buttonStyle} onClick={() => {onTagClick(["tb"],"brain")}}>Brain</button> : <button onClick={() => {onTagClick(["tb"],"brain")}}>Brain</button>}
                         </div>
                         <div className="col-lg-2 col-md-2 col-3">
-                            <button onClick={() => {onTagClick('neurology')}}>Neurology</button>
+                            {props.selectTag == "liver"? <button style={buttonStyle} onClick={() => {onTagClick(["diabetes"],"liver")}}>Liver</button> : <button onClick={() => {onTagClick(["diabetes"],"liver")}}>Liver</button>}
                         </div>
                     </div>
                 </div>

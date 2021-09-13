@@ -11,7 +11,8 @@ const cards = data.videosData;
 function App() {
 
     const [video, setVideo] = useState({});
-    const [filteredArray, setFilteredArray] = useState({});
+    const [filteredArray, setFilteredArray] = useState([]);
+    const [selectedTag, setSelectedTag] = useState('');
 
     function onCardClick(a) {
         setVideo(a);
@@ -22,16 +23,17 @@ function App() {
         setVideo(b);
     }
 
-    function updateFilter(obj){
+    function updateFilter(obj,selectedTag){
         setFilteredArray(obj);
+        setSelectedTag(selectedTag);
     }
 
   return (
       <div>
           <div className="bg"></div>
           <Header></Header>
-          <Slider cards={cards} updateFilterObj={updateFilter}></Slider>
-          {Object.keys(filteredArray).length === 0 && filteredArray.constructor === Object? '' : <FilteredArray cards={cards} cardFunction={onCardClick}></FilteredArray>}
+          <Slider cards={cards} selectTag={selectedTag} updateFilterObj={updateFilter}></Slider>
+          {filteredArray.length == 0? '' : <FilteredArray cards={filteredArray} selectTag={selectedTag} cardFunction={onCardClick}></FilteredArray>}
           <Main cards={cards} cardFunction={onCardClick}></Main>
           <PopUp video={video} onClosePopUp={closePopUp}></PopUp>
       </div>
